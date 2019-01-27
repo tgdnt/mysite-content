@@ -26,9 +26,9 @@ With the configuration below, I have tried to enhance my use of Org Mobile by bu
 
 [fn:encryption] Note that Org Mobile will not encrypt the file names, so those will be exposed to your cloud sync provider.
 ** How it works
-With the following code in your dotfile, every time you run ~org-mobile-push~, Emacs will first clear the Org Mobile directory, then perform the normal operations of ~org-mobile-push~, and finally use [[https://rclone.org][rclone]] to sync the newly written files to the cloud.
+With the following code in your dotfile, every time you run ~org-mobile-push~, Emacs will first clear the Org Mobile directory, then perform the function's normal operations, and finally use [[https://rclone.org][rclone]] to sync the newly written files to the cloud.
 
-On the other end, every time you run ~org-mobile-pull~, Emacs will clear the Org Mobile directory, sync the data back from the cloud, where it may have been updated by your mobile app and then perform ~org-mobile-pull~ normally.
+On the other end, every time you run ~org-mobile-pull~, Emacs will clear the Org Mobile directory, sync the data back from the cloud, where it may have been updated by your mobile app and then perform the function normally.
 
 In the code examples below, it is assumed that the local Org Mobile directory is ~~/mobileorg~ and that rclone is configured with a cloud service named ~Dropbox~, within which the Org Mobile directory is ~Apps/MobileOrg~. For more information on rclone configuration, visit [[https://rclone.org/][https://rclone.org/]]. For a Gist containing all of the code in one file, click [[https://gist.github.com/tgdnt/f10ef466a3a6ba24cfc39bce23b59b88][here]].
 
@@ -75,7 +75,7 @@ Finally, we will add the functions we created to the appropriate hooks[fn:hooks]
 
 [fn:hooks] Hooks are functions that run at the same time as other events. Org Mobile provides hooks for before and after both push and pull.
 ** Automatically syncing at Emacs startup
-To make push and pull happen automatically, one thing you can do is add ~org-mobile-pull~ to your ~init.el~ file and also add ~org-mobile-push~ to ~kill-emacs-hook~.
+To make push and pull happen automatically, one thing you can do is add ~org-mobile-pull~ to your /init.el/ file and also add ~org-mobile-push~ to the ~kill-emacs-hook~.
 
 #+BEGIN_SRC emacs-lisp
 (add-hook 'kill-emacs-hook 'org-mobile-push)
@@ -83,7 +83,7 @@ To make push and pull happen automatically, one thing you can do is add ~org-mob
 (org-mobile-pull)
 #+END_SRC
 
-Note that before running ~org-mobile-pull~, I ran ~org-mode~. It seems like if you don't first run ~org-mode~, the function ~org-mobile-pull~ will not have been defined, so it won't run at all.
+Note that before running ~org-mobile-pull~, I ran ~org-mode~. It seems like if you don't first do that, the function ~org-mobile-pull~ will not have been defined, so it won't run at all.
 
 An unwanted side effect is that, in [[http://spacemacs.org/][Spacemacs]], when you use ~SPC f e R~ to reload your dotfile, it will put your current buffer in Org mode, and as you are likely to be editing your dotfile, you would certainly prefer to remain in Emacs Lisp mode.
 
