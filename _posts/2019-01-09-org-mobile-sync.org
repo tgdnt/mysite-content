@@ -30,8 +30,13 @@ With the following code in your dotfile, every time you run ~org-mobile-push~, E
 
 On the other end, every time you run ~org-mobile-pull~, Emacs will clear the Org Mobile directory, sync the data back from the cloud, where it may have been updated by your mobile app and then perform the function normally.
 
-In the code examples below, it is assumed that the local Org Mobile directory is ~~/mobileorg~ and that rclone is configured with a cloud service named ~Dropbox~, within which the Org Mobile directory is ~Apps/MobileOrg~. For more information on rclone configuration, visit [[https://rclone.org/][https://rclone.org/]]. For a Gist containing all of the code in one file, click [[https://gist.github.com/tgdnt/f10ef466a3a6ba24cfc39bce23b59b88][here]].
-
+#+BEGIN_HTML
+<p class=message>
+<strong>Note:</strong> in the code examples below, it is assumed that the local Org Mobile directory is <code>~/mobileorg</code> and that rclone is configured with a cloud service named <code>Dropbox</code>, within which the Org Mobile directory is <code>Apps/MobileOrg</code>.
+For more information on rclone configuration, visit <a href="https://rclone.org/">https://rclone.org/</a>.
+For a Gist containing all of the code in one file, click <a href="https://gist.github.com/tgdnt/f10ef466a3a6ba24cfc39bce23b59b88">here</a>.
+</p>
+#+END_HTML
 *** Clearing the Org Mobile directory
 Because ~org-mobile-push~ does not update the Org Mobile directory but rather just pushes to it, although it will overwrite any existing files, it won't remove files that have been deleted or no longer staged for Org Mobile. This doesn't really matter because your mobile application should only fetch what is listed in the /index.org/ file any way, but for the sake of neatness and to avoid syncing unnecessary data, I added this cleaning step.
 
