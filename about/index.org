@@ -1,20 +1,28 @@
+#+BEGIN_HTML
 ---
 title: About
 permalink: /about/
 ---
+#+END_HTML
+I will have several short paragraphs linking to other pages that ellaborate on each thing. Each subpage will be very short.
 
-<p>I will have several short paragraphs linking to other pages that ellaborate on each thing. Each subpage will be very short.</p>
-<p>I am a Brazilian immigrant in Kansas City currently working on a portfolio of technical writing seeking to begin a career that field.</p>
-<p>I have long loved discovering and exploring business software at every job I've had, and it's always been an area of excellence for me.</p>
-<p>At home, I have learned bash scripting to achieve my productivity goals on the computer.</p>
-<p>In the past I have worked as a freelance web developer building custom Wordpress themes, and more recently I dove into Jekyll, with which I have built this site, starting off with Poole and taking a lot of inspiration from Indigo.</p>
-<p>I have also spent much of my professional career working as a freelance videographer, shooting and editing video mostly in the non-profit sector. My most significant project were a couple of short documentaries that are available on Youtube.</p>
-<p>In college, I learned a lot about the history of filmmaking and became a lover of classic films, and am determined to one day be caught up on the history of cinema.</p>
-<p>Also there, I learned about communication studies and learned to love writers like Barthes, Deleuze, Baudrillard, McLuhan and others. You know the lot.</p>
-<p>I lived in the United Kingdom.</p>
-<ul>
-<li>a writer</li>
-<li>an immigrant</li>
-<li>a filmmaker</li>
-<li>a cyclist</li>
-</ul>
+I am a Brazilian immigrant in Kansas City currently working on a portfolio of technical writing seeking to begin a career that field.
+
+I have long loved discovering and exploring business software at every job I've had, and it's always been an area of excellence for me.
+
+At home, I have learned bash scripting to achieve my productivity goals on the computer.
+
+In the past I have worked as a freelance web developer building custom Wordpress themes, and more recently I dove into Jekyll, with which I have built this site, starting off with Poole and taking a lot of inspiration from Indigo.
+
+I have also spent much of my professional career working as a freelance videographer, shooting and editing video mostly in the non-profit sector. My most significant project were a couple of short documentaries that are available on Youtube.
+
+In college, I learned a lot about the history of filmmaking and became a lover of classic films, and am determined to one day be caught up on the history of cinema.
+
+Also there, I learned about communication studies and learned to love writers like Barthes, Deleuze, Baudrillard, McLuhan and others. You know the lot.
+
+I lived in the United Kingdom.
+
+- a writer
+- an immigrant
+- a filmmaker
+- a cyclist
