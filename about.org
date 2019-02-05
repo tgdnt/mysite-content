@@ -1,0 +1,48 @@
+#+BEGIN_HTML
+---
+title: About me
+permalink: /about/
+nofooter: t
+---
+#+END_HTML
+I am a Brazilian immigrant in Kansas City working on a portfolio of technical writing and looking to begin a career in that field.
+#+BEGIN_HTML
+<img src="{{ site.baseurl }}/assets/images/about-1.jpg" class="float-right" />
+#+END_HTML
+
+** Things I can do:
+- write;
+- build websites;
+- write bash scripts;
+- make movies;
+- speak Portuguese;
+- speak Spanish;
+- more...
+
+** Things I want to do:
+- work with words, style and typography, technology and education in an industry where important work gets done;
+- catch up on the history of world cinema;
+- write and shoot my own movies.
+
+** Things I have done:
+- studied Communications in college with a focus on Radio and TV;
+- worked as a freelance videographer, shooting and editing video;
+- taught workshops on video production;
+- managed a youth hostel in London with 40 dorms and 200 beds;
+- worked at a hardware store and learned how to be a salesman;
+- worked at a hardware store and learned how to drive lift equipment;
+- made pizza for a living;
+- lived in the United Kingdom and the Dominican Republic.
+
+** Things that matter to me:
+- good copy;
+- good journalism;
+- privacy and cybersecurity;
+- coffee;
+- cycling;
+- art;
+- soccer.
+
+#+BEGIN_HTML
+<p>Any questions? <a href="mailto:{{ site.comment_to_email }}?subject={{ page.title | uri_escape }}">Email me!</a></p>
+#+END_HTML
