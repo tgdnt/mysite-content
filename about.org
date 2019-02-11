@@ -7,7 +7,11 @@ nofooter: t
 #+END_HTML
 I am a Brazilian immigrant in Kansas City working on a portfolio of technical writing and looking to begin a career in that field.
 #+BEGIN_HTML
-<img src="{{ site.baseurl }}/assets/images/about-1.jpg" class="float-right" />
+<picture>
+    <source media="(min-width: 760px)" srcset="../assets/images/about-1.jpg">
+    <source media="(min-width: 600px)" srcset="../assets/images/avatar.jpg">
+    <img src="../assets/images/about-1.jpg" class="float-right" />
+</picture>
 #+END_HTML
 
 ** Things I can do:
