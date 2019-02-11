@@ -70,13 +70,13 @@ What this means is that, in my Org source files, I enclose my YAML front matter 
 However, unlike the article's recommendation, I don't use Org mode's export function, sticking with /pandoc/ instead.
 
 #+BEGIN_HTML
-<p class="message">
+<aside>
 Similarly, there are times in which one has to use <code>#+BEGIN_HTML</code> tags in Org to use the <code>.message</code> class, such as in this box.
 This type of object can be useful to set something aside from the body text without putting it away in a footnote, perhaps because it can't be specifically attached to any single point in the body text.
-As perhaps an aside within an aside, this would really be best achieved by the <code>&lt;aside&gt;</code> tag, which a lot of developers unimaginatively seem to use mostly for sidebars.
+As perhaps an aside within an aside, this would really be best achieved by the <code>&lt;aside&gt;</code> tag, which a lot of developers seem to use for sidebars and other template-level things.
 This style should really be selected directly by the HTML tag&mdash;no CSS class needed&mdash;and perhaps a <code>#+BEGIN_ASIDE</code> tag is in order.
 Moving on: because this sort of element is not covered by Org, this bit needs to be typed in HTML.
-</p>
+</aside>
 #+END_HTML
 
 The first few lines will find all the ~.org~ files within the Org source folder, which here is ~./_orgsource~, and then start a ~while~ loop to work through them.

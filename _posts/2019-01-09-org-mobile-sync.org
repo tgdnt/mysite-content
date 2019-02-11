@@ -30,10 +30,10 @@ On the other end, every time you run ~org-mobile-pull~, Emacs will /clear the Or
 This is done by creating functions that perform those operations and then adding them to hooks that run alongside ~org-mobile-pull~ and ~org-mobile-push~.
 
 #+BEGIN_HTML
-<p class=message>
+<aside>
 <strong>Note:</strong> in the code examples below, it's assumed that the local Org Mobile directory is <code>~/mobileorg</code> and that rclone is configured with a cloud service named <code>Dropbox</code>, within which the Org Mobile directory is <code>Apps/MobileOrg</code>.
 For more information on rclone configuration, visit <a href="https://rclone.org/">https://rclone.org/</a>.
-</p>
+</aside>
 #+END_HTML
 *** Clearing the Org Mobile directory
 Because ~org-mobile-push~ does not update the Org Mobile directory but rather just pushes to it, although it will overwrite any existing files, it won't remove those that have been deleted or are no longer staged for Org Mobile. This doesn't really matter because your mobile app should only fetch what is listed in the *index.org* file anyway, but for the sake of neatness and to avoid transferring unnecessary data, I added this cleaning step.
