@@ -12,17 +12,16 @@ It is easy to type, with syntax that's easy to memorize, and its plain text form
 
 Its popularity, however, doesn't quite pay off.
 Seemingly due to shortcomings in its original version, multiple standards have emerged, and it's not always clear which one is in use or how much of it is actually implemented.
-[[http://pandoc.org][/Pandoc/]], for example, can export to /six/ different types of Markdown, and various different specs can have minor differences that can be hard to remember.
+[[http://pandoc.org][Pandoc]], for example, can export to /six/ different types of Markdown, and various different specs can have minor differences that can be hard to remember.
 
 [[https://orgmode.org/org.html#Org-Mobile][Org]], on the other hand, is one standard centered around an excellent tool for editing it: /Emacs Org mode/.
 Org syntax is by no means perfect, but it has been there for a long time and is just as easy to work with as Markdown.
-
 Those who want to use Org for typing are typically people who, like myself, already use Org to organize their work and are just used to the syntax.
 
 ** Starting out with MkDocs
 Hoping to give my site a documentation feel, I set out working with [[https://www.mkdocs.org/][MkDocs]], a static site generator for software documentation.
 I had envisioned collections of articles on a number of subjects, which I could group together and display as if documentation.
-I Soon found that /MkDocs/ really only made sense for actual documentation, but not before I had written a /bash/ script to convert my Org files into Markdown and then build the site with /MkDocs/.
+I Soon found that MkDocs really only made sense for actual documentation, but not before I had written a /bash/ script to convert my Org files into Markdown and then build the site with MkDocs.
 
 Here are some of my lightly edited notes from working with /MkDocs/.
 
@@ -33,43 +32,44 @@ The following command will convert Org syntax into Markdown.
 pandoc -t gfm --wrap=preserve -o output.md input.org
 #+END_SRC
 
-The ~gfm~ format (Github-flavored Markdown) has so far worked well with MkDocs.
-The option ~--wrap=preserve~ is necessary because, by default, /pandoc/ will create line breaks, which will be ignored by the markdown parser.
+The option ~-t gfm~ selects /Github-flavored Markdown/ as the output format, which has so far worked well with MkDocs.
+For better plain text readability, ~pandoc~ creates line breaks that are ignored during export.
 However, if they come within a span of inline code, the line break will make it into the rendered HTML.
-To prevent this, tell /pandoc/ to preserve the original text wrapping.
+To prevent this, we must tell ~pandoc~ to preserve the original text wrapping by giving it the option ~--wrap=preserve~.
 *** Noted on [2018-12-02 Sun 23:35]
-To operate on all the Org files we need, the script has to create a variable for the new filename, changing its extension via /sed/[fn:sed], and then, using a ~while~ loop, iterate through every ~.org~ file within the present working directory or any of its subdirectories.
+To operate on all the Org files we need, the script has to create a variable for the new filename, changing its extension via ~sed~[fn:sed], and then, using a ~while~ loop, iterate through every ~.org~ file within the present working directory or any of its subdirectories.
 
 #+BEGIN_SRC bash
-find . -name "*.org" | while read -r filename
-do newfilename=$(echo $filename | sed -e "s/\.org/.md/g")
-pandoc -t gfm --wrap=preserve -o $newfilename $filename
+find . -name "*.org" | while read -r filename; do
+  newfilename=$(echo $filename | sed -e "s/\.org/.md/g")
+  pandoc -t gfm --wrap=preserve -o $newfilename $filename
 done
 #+END_SRC
-[fn:sed] /sed/, stream editor, is a Unix program that can manipulate text. It's one of the most useful tools to learn for bash scripting.
+[fn:sed] ~sed~, stream editor, is a Unix program that can manipulate text. It's one of the most useful tools to learn for bash scripting.
 
 See http://www.grymoire.com/Unix/Sed.html
 *** Noted on [2018-12-03 Mon 13:32]
-Upon running this from ~.travis.yml~, I had to use ~dist: xenial~, which allows me to install /pandoc/ 1.16 as a dependency, in which the option ~--wrap=preserve~ works. 
-Other dists only allowed /pandoc/ 1.12, which did not have that option yet.
+Upon running this from ~.travis.yml~, I had to use ~dist: xenial~, which allows me to install ~pandoc~ 1.16 as a dependency, in which the option ~--wrap=preserve~ works. 
+Other dists only allowed ~pandoc~ 1.12, which did not have that option yet.
 The output format ~gfm~ does not work even in 1.16, but the now deprecated ~markdown_github~ appears to work fine.
 ** Moving to Jekyll
 It's worth mentioning that there is a gem called /[[https://github.com/eggcaker/jekyll-org][jekyll-org]]/ that claims to enable Org syntax in /Jekyll/.
 It looks very interesting, but for now I've decided to stick with my script because it is simpler and easier to debug.
 
 As suggested in /[[https://orgmode.org/worg/org-tutorials/org-jekyll.html][Using org to blog with Jekyll]]/, I enclose my front matter between ~#+BEGIN_HTML~ and ~#+END_HTML~ tags.
-Similarly, such tags are useful for inserting elements that are not covered by Org syntax, such as the ~<aside>~ element.[fn:aside]
+Similarly, such tags are useful for inserting elements that are not covered by the Org syntax, such as the ~<aside>~ element.
 
-Largely unchanged from its /MkDocs/ version, the line below will find all the ~.org~ files within the Org source folder, which here is ~./_orgsource~, and then start a ~while~ loop to work through them.
+Largely unchanged from its MkDocs version, the line below will find all the ~.org~ files within the Org source folder, which here is ~./_orgsource~, and then start a ~while~ loop to work through them.
 
 #+BEGIN_SRC bash
 find ./_orgsource -name "*.org" | while read -r filename; do
 #+END_SRC
 
-/Jekyll/ has a special way of doing code highlighting using a package called [[https://jekyllrb.com/docs/liquid/tags/#code-snippet-highlighting][Rouge]], which takes a /Liquid/ tag to invoke them.
-To transform Org-style source code blocks into the appropriately tagged blocks, a /sed/ command replaces ~#+BEGIN_SRC~ tags with a ~#+BEGIN_HTML~ tag followed by the /Liquid/ ~{% raw %}{% highlight %}{% endraw %}~ tags.
+/Jekyll/ has a special way of doing code highlighting[fn::Jekyll uses a package called /Rouge/ for code highlighting, see [[https://jekyllrb.com/docs/liquid/tags/#code-snippet-highlighting][link]] for more.] that is activated by a /Liquid/ tag.
+To transform Org-style source code blocks into the appropriately tagged blocks, a ~sed~ command replaces ~#+BEGIN_SRC~ tags with a ~#+BEGIN_HTML~ tag followed by the /Liquid/ ~{% raw %}{% highlight %}{% endraw %}~ tags.
 
-The script will automatically do this throughout each file, wherever ~#+BEGIN_SRC~ tags appear. The first /sed/ command takes care of the opening and the second does the closing. Note that it is necessary for the language identifier here to match between Org and Rouge.
+The script will automatically do this throughout each file, wherever ~#+BEGIN_SRC~ tags appear.
+Note that the language identifier here must match between Org and Rouge for this to work.
 
 #+BEGIN_SRC bash
 sed -e 's/\(\#\+BEGIN\_SRC \)\(.*\)/\#\+BEGIN_HTML\
@@ -77,7 +77,7 @@ sed -e 's/\(\#\+BEGIN\_SRC \)\(.*\)/\#\+BEGIN_HTML\
 \#\+END_HTML/' $filename > $filename.temp.org
 #+END_SRC
 
-Next, we use /sed/ again to change the file extension, as we did before, but this time we also need to drop the ~_orgsource/~ bit of the file name.
+Next, we use ~sed~ again to change the file extension, as we did before, but this time we also need to drop the ~_orgsource/~ bit of the file name.
 This is what will ensure that the whole structure within your source directory transfers over to the root after converting into HTML.
 
 #+BEGIN_SRC bash
@@ -88,7 +88,7 @@ newfilename=$(echo $filename | sed -e "s/\(\.\/\)\(\_orgsource\/\)\(.*\)\(.org\)
 
 The source folder should be structured to mirror the root of your project folder, so that all the exported files will fall into their appropriate places for /Jekyll/ to find them.
 
-Finally, we can run the temporary HTML file through /pandoc/.
+Finally, we can run the temporary HTML file through ~pandoc~.
 This time we won't need to worry about the issue with the newlines in the Markdown conversion, because we are going straight to HTML.
 After that, we can also remove the temporary file we just converted, close the ~while~ loop and run ~jekyll~.
 
@@ -111,9 +111,3 @@ mkdir _posts
 And that is how I convert my Org-formatted content for /Jekyll/.
 Thank you for reading, I hope this may be useful to some of you who really like Org.
 See the final script in this [[https://gist.github.com/tgdnt/cba70c5fda14fac47eefb9be80677e94][Github gist]].
-
-[fn:aside] I think an /aside/ can be understood as a footnote that's not related to any specific word or sentence.
-You want to set it aside from the regular content /after/ a certain paragraph, not within it.
-
-A lot of web developers use the ~<aside>~ element for sidebars and other template-level things.
-For example, [[https://bigfootjs.com/][Bigfoot]] footnotes use it, largely relying on developers not styling it.
