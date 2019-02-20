@@ -1,9 +1,10 @@
 #+BEGIN_HTML
 ---
 title: Typing for Jekyll with Org syntax
-description: Notes on creating a bash script to convert Org syntax to HTML for use with Jekyll.
+description: 
+  "Notes on creating a bash script to convert Org syntax to HTML for use with Jekyll."
 lede:
-  This is a *Jekyll* site for which I type content in Org syntax. This is a record of creating a bash script to convert Org syntax to HTML for *Jekyll*.
+  "This is a *Jekyll* site for which I type content in Org syntax. In this post, I share a record of creating a bash script to convert Org syntax to HTML for *Jekyll*."
 ---
 #+END_HTML
 ** Why Org?

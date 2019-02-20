@@ -1,10 +1,10 @@
 #+BEGIN_HTML
 ---
 title: Syncing your Org Mobile data
-lede:
-  "Org Mobile is a protocol for a mobile Org workflow. It has some great features and a few drawbacks. In this post, I discuss an /Emacs/ configuration that enhances my use of the protocol by tying the sync step into it."
 description:
   "A walkthrough of Emacs configurations for syncing Org Mobile data, and a discussion of the pros and cons of Org Mobile."
+lede:
+  "Org Mobile is a protocol for a mobile Org workflow. It has some great features and a few drawbacks. In this post, I discuss an /Emacs/ configuration that enhances my use of the protocol by tying the sync step into it."
 ---
 #+END_HTML
 
