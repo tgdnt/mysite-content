@@ -66,7 +66,7 @@ Largely unchanged from its MkDocs version, the line below will find all the ~.or
 find ./_orgsource -name "*.org" | while read -r filename; do
 #+END_SRC
 
-/Jekyll/ has a special way of doing code highlighting[fn::Jekyll uses a package called /Rouge/ for code highlighting, see [[https://jekyllrb.com/docs/liquid/tags/#code-snippet-highlighting][link]] for more.] that is activated by a /Liquid/ tag.
+/Jekyll/ has a special way of doing code highlighting[fn:rouge] that is activated by a /Liquid/ tag.
 To transform Org-style source code blocks into the appropriately tagged blocks, a ~sed~ command replaces ~#+BEGIN_SRC~ tags with a ~#+BEGIN_HTML~ tag followed by the /Liquid/ ~{% raw %}{% highlight %}{% endraw %}~ tags.
 
 The script will automatically do this throughout each file, wherever ~#+BEGIN_SRC~ tags appear.
@@ -110,5 +110,17 @@ mkdir _posts
 #+END_SRC
 
 And that is how I convert my Org-formatted content for /Jekyll/.
-Thank you for reading, I hope this may be useful to some of you who really like Org.
 See the final script in this [[https://gist.github.com/tgdnt/cba70c5fda14fac47eefb9be80677e94][Github gist]].
+
+[fn:rouge] Jekyll uses a package called /Rouge/ for code highlighting, see [[https://jekyllrb.com/docs/liquid/tags/#code-snippet-highlighting][link]] for more.
+
+** Further work
+First of all, although this has been fun to work on, it would be reasonable to look into /jekyll-org/ and consider using it.
+It may present a good opportunity to learn in /Ruby/, if I could try to build some of what I did here into that.
+
+As of right now, my thoughts towards the future of this script have been towards converting a ~#+BEGIN_ASIDE~ block, which would perhaps amount to extending Org syntax.
+
+Beyond this script, I also have several notes about /asides/ and the ~<aside>~ element, which I will edit into an article, as I spend more time on matters of writing and style rather than tooling.
+
+I appreciate your reading, and I hope this may be useful to some of you who really like Org.
+Please share with me any thoughts and ideas related to this post via [[mailto:tiago@tgdnt.com?subject=Typing%20for%20Jekyll%20with%20Org%20syntax][email]].
