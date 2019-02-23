@@ -4,59 +4,61 @@ title: Syncing your Org Mobile data
 description:
   "A walkthrough of Emacs configurations for syncing Org Mobile data, and a discussion of the pros and cons of Org Mobile."
 lede:
-  "Org Mobile is a protocol for a mobile Org workflow. It has some great features and a few drawbacks. In this post, I discuss an /Emacs/ configuration that enhances my use of the protocol by tying the sync step into it."
+  "*Org Mobile* is a protocol for a mobile Org workflow. It has some great features and a few drawbacks. In this post, I discuss an *Emacs* configuration that enhances my use of the protocol by tying the sync step into it."
 ---
 #+END_HTML
 
 [[https://orgmode.org/org.html#Org-Mobile][Org Mobile]] works by creating something like a proxy of your Org files in a designated directory for a mobile app to read and write to.
 The same package then provides commands to reingest the modified data and propagate its changes.
 
-I believe [[https://mobileorg.github.io][MobileOrg]] is the only app, at least on iOS, to actually use the /Org Mobile/ protocol.
+I believe [[https://mobileorg.github.io][MobileOrg]] is the only app, at least on iOS, to actually use the /Org Mobile/ protocol[fn:mobileorgmobile].
 Others, such as [[https://beorgapp.com/][beorg]], simply synchronize the Org directory itself to edit the files directly.
 
-I think the most compelling reason to use /Org Mobile/, and the reason I decided to try it, is its built-in encryption.
+The most compelling reason to use /Org Mobile/, and the reason I decided to try it, is its built-in encryption.
 With it, you can make your Org data available to yourself online while keeping it private, uploading nothing but ciphertext[fn:encryption].
 
-The most compelling reason /not/ to use it is certainly that the user must remember to run the functions to /push/ and /pull/ the data.
-A close second, most users will find the /MobileOrg/ iOS app disappointing.
+The most compelling reason /not/ to use it is either that the user must remember to run the functions to /push/ and /pull/ the data or that most users will find the /MobileOrg/ iOS app disappointing.
 
-With the configuration below, I've tried to mitigate these for my own use by building the sync step into the /Org Mobile/ commands, eliminating the need for an /always-on/ synchronization daemon.
+With the configuration below, I've tried to mitigate some of this, according to my own priorities, by building the sync step into the /Org Mobile/ commands, eliminating the need for an /always-on/ synchronization daemon.
 
-Less successfully thus far, I have tried out ways to trigger /push/ and /pull/ automatically in /Emacs/.
+[fn:mobileorgmobile] I sincerely apologize for the way the words /mobile/ and /org/ float around each other all over this article. /Org Mobile/ is the protocol, /MobileOrg/ is the mobile app that uses it, and ~org-mobile~ is the /feature/ in /Emacs/.
 
 [fn:encryption] Note that /Org Mobile/ will not encrypt the file names, just their contents, so some private information may be gleaned.
+
+For most, a private alternative would be to host your own /WebDAV/ server. In my opinion, though, self-hosting does not negate the benefits of encryption.
+
 ** How it works
-With the following code in your dotfile, every time you run ~org-mobile-push~, /Emacs/ will (1) clear the /Org Mobile/ directory, (2) write your /Org Mobile/ data to it, and (3) use [[https://rclone.org][rclone]] to sync the newly written files.
+With the following code in your /dotfile/, every time you run ~org-mobile-push~, /Emacs/ will (1) clear the /Org Mobile/ directory, (2) write your /Org Mobile/ data to it, and (3) use [[https://rclone.org][rclone]] to sync the newly written files.
 
 On the other end, every time you run ~org-mobile-pull~, /Emacs/ will (1) clear the /Org Mobile/ directory, (2) fetch the data from the cloud---where it may have been updated by your mobile app, and (3) push its changes into your Org directory.
 
-This is done by creating functions that perform those operations and adding them to hooks that run alongside ~org-mobile-pull~ and ~org-mobile-push~.
+This is done by creating functions that perform those operations and adding them to hooks that run with ~org-mobile-pull~ and ~org-mobile-push~.
 Find the entire code example in this Github [[https://gist.github.com/tgdnt/f10ef466a3a6ba24cfc39bce23b59b88][gist]].
 
 #+BEGIN_HTML
 <aside>
 #+END_HTML
-In the code examples below, it's assumed that the local /Org Mobile/ directory is ~~/mobileorg~ and that /rclone/ is configured with a cloud service named ~Dropbox~, within which the /Org Mobile/ directory is ~Apps/MobileOrg~.
-For more information on /rclone/ configuration, visit [[https://rclone.org/][https://rclone.org/]].
+*Note:* In the code examples below, it's assumed that the local /Org Mobile/ directory is ~~/mobileorg~ and that ~rclone~ is configured with a cloud service named ~Dropbox~, within which the /Org Mobile/ directory is ~Apps/MobileOrg~.
+For more information on ~rclone~ configuration, visit [[https://rclone.org/][https://rclone.org/]].
 #+BEGIN_HTML
 </aside>
 #+END_HTML
-
-
-*** Clearing the Org Mobile directory
+*** Clearing the /Org Mobile/ directory
 Because ~org-mobile-push~ does not update the /Org Mobile/ directory but rather just pushes to it, it won't remove files that have been deleted.
 This doesn't really matter because your mobile app should only fetch what is listed in the /index.org/ file anyway, so this step can really be considered optional.
 
 #+BEGIN_SRC emacs-lisp
 (defun org-mobile-clean-pre-push()
-  (with-temp-buffer(shell-command "rm ~/mobileorg/*" t)))
+  (with-temp-buffer
+    (shell-command "rm ~/mobileorg/*" t)))
 #+END_SRC
 
 When running ~shell-command~, /Emacs/ will show a buffer with the results of your command.
-We don't want to see those, in this case, and they are normally going to be blank anyway. By running the command within ~with-temp-buffer~, that buffer won't persist.
+We don't want to see those, in this case, and they're normally going to be blank anyway. By running the command inside ~with-temp-buffer~, that buffer won't persist.
 *** Pushing
 The function below will run ~rclone sync~[fn:rcloneusage] to upload the /Org Mobile/ data.
-The option ~--exclude \.DS_Store~ is used to ignore /macOS/ system files.
+
+~--exclude \.DS_Store~ is used to ignore /macOS/ system files.
 Obviously, you may leave this out if you're on another system.
 
 #+BEGIN_SRC emacs-lisp
@@ -83,37 +85,34 @@ Since we only need to run extra actions /before/ ~org-mobile-pull~ runs, they ca
 (add-hook 'org-mobile-pre-pull-hook 'org-mobile-rclone-sync-pre-pull)
 #+END_SRC
 
-** Automatically syncing at /Emacs/ startup
-So far, I have been unable to find an adequate way to trigger /push/ and /pull/ without the user initiating them.
-The first thing that comes to mind is to add ~org-mobile-pull~ to your /init.el/ file and ~org-mobile-push~ to the ~kill-emacs-hook~.
-
+*** Automatically syncing
+At this point, we will be running processes at startup rather than just creating functions and adding them to hooks, so this bit will cause /Emacs/ start up to lag.
+The drawbacks may outweigh the benefits, so it should be considered whether or not this is really necessary.
 #+BEGIN_SRC emacs-lisp
 (add-hook 'kill-emacs-hook 'org-mobile-push)
-(org-mode)
+(require 'org-mobile)
 (org-mobile-pull)
 #+END_SRC
 
-Note that before ~org-mobile-pull~, ~org-mode~ should be called.
-It seems like the function ~org-mobile-pull~ is not defined otherwise, so it won't run at all.
-An unwanted side effect is that, in [[http://spacemacs.org/][Spacemacs]], when you use ~SPC f e R~ to reload your dotfile, it will put your current buffer in /Org mode/, and as you are likely to be editing your /dotfile/, you would certainly prefer to remain in /Emacs Lisp mode/.
+We must use ~(require 'org-mobile)~ to make /Emacs/ load whatever it takes to make the ~org-mobile~ /feature/ available.
+If it is not available, Emacs won't know what ~org-mobile-pull~ is supposed to do.
+This step may not be necessary if another Org mode /feature/ has already been called earlier in your /init.el/ file[fn:require].
 
-Perhaps even worse, it slows /Emacs/ startup and shutdown considerably.
-The obvious alternative, the ~org-mode-hook~ runs every time you switch to a Org mode buffer, not just the first time you do, making it unusable.
+[fn:require] For example, the /Spacemacs/ Org configuration layer makes it unnecessary to call ~(require 'org-mobile)~ because it will have loaded it before it runs your ~dotspacemacs/user-config~.
+** Further work
+Since writing these, I have switched over to using /beorg/, which means no /Org Mobile/ but just synchronizing the Org directory itself.
 
-As problematic as these options are, I think some such provision is essential to using /Org Mobile/ successfully.
-** Conclusion
-Hard as I may try, /Org Mobile/ remains a tough sell.
-I doubt if there are very many people using it out there.
-But as I see it, for those who are using a great app like /beorg/, having to expose your Org data to a cloud provider in plain text is a big price to pay[fn:selfhost].
+Apart from having a slightly rough user interface, the biggest let down with /MobileOrg/ for me has been its lack of any notifications.
+However, I remain very interested in /MobileOrg/ because the app is open source and supports encryption, and /beorg/ does neither.
 
-An excellent /Org Mobile/ workflow would run in /Emacs/ as a background process that, the moment the user first enters /Org mode/ during a session, prompts to confirm synchronization, then pushes data automatically whenever an Org file is saved.
-If it can integrate with /rclone/ as I did here, so much the better.
+To get back on /MobileOrg/, I intend to get notifications by exporting my Org agendas to /.ics/ format and using [[https://github.com/pimutils/vdirsyncer][vdirsyncer]] to synchronize that, so I would receive mobile notifications via a Calendar app.
 
-For now, though, I have moved over to /beorg/ for its great integration with the iOS Calendar, matched by the /Emacs diary/ within the /Org Agenda/[fn:diary].
-I'm happy to support a developer that is working on an Org app.
+I've seen other interesting mobile Org workflows around the web that I plan to work on in the future.
+In particular, the question of when to automatically trigger sync remains open[fn:savesync].
+Also, some research is needed on figuring out whether ~org-mobile-push~ pushes every file regardless whether or not it has been changed (which would mean we should not clear the /Org Mobile/ directory), and whether ~rclone~ makes the same decision based on /modified date/ or /hash/.
+Those answers may show us how to make this process faster.
 
-However, as I learn more about /Emacs Lisp/, I must revisit /Org Mobile/ and hopefully even contribute to it.
-As always, if you have any ideas, please share them with me by [[mailto:tiago@tgdnt.com?subject=Org Mobile Sync][email]].
+Please share your thought and ideas on this, or if you have seen any code that can fill a hole here.
+Send me an [[mailto:{{ site.comments_email }}?subject={{ page.title | uri_escape }}][email]].
 
-[fn:selfhost] Of course, for those who want to do that, a private alternative would be to host your own /WebDAV/ server. On the internet of my dreams, however, even self-hosted data is end-to-end encrypted.
-[fn:diary] I have also written a script, run via /cron/, that exports calendar data from /Khal/ compatible with /Emacs diary/, keeping that always in sync with my iCloud calendars. I'll discuss that in a future post.
+[fn:savesync] See [[https://stackoverflow.com/questions/8432108/how-to-automatically-do-org-mobile-push-org-mobile-pull-in-emacs#answer-38517906][link]] for what looks like a sound implementation of triggering push every time an /Org mode/ buffer is saved.
