@@ -35,14 +35,9 @@ On the other end, every time you run ~org-mobile-pull~, /Emacs/ will (1) clear t
 This is done by creating functions that perform those operations and adding them to hooks that run with ~org-mobile-pull~ and ~org-mobile-push~.
 Find the entire code example in this Github [[https://gist.github.com/tgdnt/f10ef466a3a6ba24cfc39bce23b59b88][gist]].
 
-#+BEGIN_HTML
-<aside>
-#+END_HTML
-*Note:* In the code examples below, it's assumed that the local /Org Mobile/ directory is ~~/mobileorg~ and that ~rclone~ is configured with a cloud service named ~Dropbox~, within which the /Org Mobile/ directory is ~Apps/MobileOrg~.
-For more information on ~rclone~ configuration, visit [[https://rclone.org/][https://rclone.org/]].
-#+BEGIN_HTML
-</aside>
-#+END_HTML
+@@html:<aside>@@ *Note:* In the code examples below, it's assumed that the local /Org Mobile/ directory is ~~/mobileorg~ and that ~rclone~ is configured with a cloud service named ~Dropbox~, within which the /Org Mobile/ directory is ~Apps/MobileOrg~.
+For more information on ~rclone~ configuration, visit [[https://rclone.org/][https://rclone.org/]].@@html:</aside>@@
+
 *** Clearing the /Org Mobile/ directory
 Because ~org-mobile-push~ does not update the /Org Mobile/ directory but rather just pushes to it, it won't remove files that have been deleted.
 This doesn't really matter because your mobile app should only fetch what is listed in the /index.org/ file anyway, so this step can really be considered optional.
@@ -112,7 +107,7 @@ In particular, the question of when to automatically trigger sync remains open[f
 Also, some research is needed on figuring out whether ~org-mobile-push~ pushes every file regardless whether or not it has been changed (which would mean we should not clear the /Org Mobile/ directory), and whether ~rclone~ makes the same decision based on /modified date/ or /hash/.
 Those answers may show us how to make this process faster.
 
-Please share your thought and ideas on this, or if you have seen any code that can fill a hole here.
+Please share your thoughts and ideas on this, or if you have seen any code that can fill a hole here.
 Send me an [[mailto:{{ site.comments_email }}?subject={{ page.title | uri_escape }}][email]].
 
 [fn:savesync] See [[https://stackoverflow.com/questions/8432108/how-to-automatically-do-org-mobile-push-org-mobile-pull-in-emacs#answer-38517906][link]] for what looks like a sound implementation of triggering push every time an /Org mode/ buffer is saved.
