@@ -98,9 +98,9 @@ This step may not be necessary if another Org mode /feature/ has already been ca
 Since writing these, I have switched over to using /beorg/, which means no /Org Mobile/ but just synchronizing the Org directory itself.
 
 Apart from having a slightly rough user interface, the biggest let down with /MobileOrg/ for me has been its lack of any notifications.
-However, I remain very interested in /MobileOrg/ because the app is open source and supports encryption, and /beorg/ does neither.
+However, I remain very interested in /MobileOrg/ because the app is open source and supports encryption, of which /beorg/ does neither.
 
-To get back on /MobileOrg/, I intend to get notifications by exporting my Org agendas to /.ics/ format and using [[https://github.com/pimutils/vdirsyncer][vdirsyncer]] to synchronize that, so I would receive mobile notifications via a Calendar app.
+To get back on /MobileOrg/, I intend to get notifications by exporting my Org agendas to /.ics/ format and using [[https://github.com/pimutils/vdirsyncer][vdirsyncer]] to synchronize that, so I would receive mobile notifications via a Calendar app. Although that's not as good as the app's own notifications would be, it's enough to get me back on.
 
 I've seen other interesting mobile Org workflows around the web that I plan to work on in the future.
 In particular, the question of when to automatically trigger sync remains open[fn:savesync].
@@ -108,6 +108,7 @@ Also, some research is needed on figuring out whether ~org-mobile-push~ pushes e
 Those answers may show us how to make this process faster.
 
 Please share your thoughts and ideas on this, or if you have seen any code that can fill a hole here.
+
 Send me an [[mailto:{{ site.comments_email }}?subject={{ page.title | uri_escape }}][email]].
 
 [fn:savesync] See [[https://stackoverflow.com/questions/8432108/how-to-automatically-do-org-mobile-push-org-mobile-pull-in-emacs#answer-38517906][link]] for what looks like a sound implementation of triggering push every time an /Org mode/ buffer is saved.
