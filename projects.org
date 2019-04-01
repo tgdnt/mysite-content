@@ -1,0 +1,57 @@
+#+BEGIN_HTML
+---
+title: Projects
+permalink: /projects/
+---
+#+END_HTML
+** Scripts
+*** /todo.sh/ add-ons
+/todo.sh/ is the command line interface for /todo.txt/, a syntax for plain text task management, for which I created and shared three add-ons.
+They are simply /bash/ scripts that introduce new functions and integrations to /todo.sh/.
+
+I worked on these as much to learn more about /bash scripting/ as to add the functionality I wanted for my own use of /todo.txt/.
+Since writing these scripts, I have switched over to /Emacs Org mode/, so their code repositories are now archived.
+**** /book/
+Project page: [[https://github.com/tgdnt/book][github.com/tgdnt/book]] 
+
+Often it is beneficial to schedule your todos on your calendar, blocking out some time to work on it.
+Some GTD[fn:1] proponents advocate actually scheduling each of your tasks rather than working with a todo list.[fn:2]
+For some time years ago, I used an excellent mobile app called /Timeful/ that did just that.[fn:3]
+
+/book/ uses [[https://lostpackets.de/khal/index.html][/khal/]] to create calendar events and can optionally use [[https://vdirsyncer.pimutils.org/en/stable/][/vdirsyncer/]] to synchronize them with various cloud services.
+[fn:1] David Allen's very popular productivity paradigm known as [[https://gettingthingsdone.com/][Getting Things Done]].
+[fn:2] See Dave Crenshaw's video [[https://www.lynda.com/Business-Software-tutorials/Replace-do-lists-schedule/440668/489450-4.html][/Replace to-do lists with a schedule/]], on Lynda.com. In my /Emacs Org mode/ set-up, my agenda shows undated TODO items under a headline that says "Unscheduled:". So I am encouraged to schedule everything. As Crenshaw argues, it's worth managing your time budget and learning to estimate effort.
+[fn:3] Unfortunately, /Timeful/ was /acquihired/ by Google, the app was quickly discontinued with the promise that its functionality would be ported over to Google apps. What I most valued was how the interface allowed you to drag tasks onto a time grid to schedule them. It could also minimize calendar events, so that they wouldn't affect your planning if they don't actually require your attention.
+**** /remind/
+Project page: [[https://github.com/tgdnt/remind][github.com/tgdnt/remind]] 
+
+/remind/ is my way of getting mobile notifications for todos on an iPhone, because none of the /todo.txt/ mobile apps really do it.
+It uses [[https://ss64.com/osx/osascript.html][/osascript/]] to interact with iOS Reminders.
+**** /stale/
+Project page: [[https://github.com/tgdnt/stale][github.com/tgdnt/stale]] 
+
+On a quest to keep your todo list tidy --- perhaps to achieve "todo list zero" --- I found it useful to have a process for managing "stale" tasks, borrowing Github's word for branches that haven't been committed to in a while.
+With ~todo.sh stale~, the user can easily move todo items back and forth between a todo file and a file such as /stale.txt/. Periodically, one would review stale todos to decide whether to just cancel them entirely or restore them.
+
+My plans for this had been to automatically prune todos that had been on your list for a certain amount of time (tracked by a required creation date).
+Since switching over to /Emacs Org mode/, I plan to port this over to /Elisp/ to continue developing it there and eventually ~(provide 'org-stale)~.
+*** myshifts.sh
+Project page: [[https://github.com/tgdnt/myshifts.sh][github.com/tgdnt/myshifts.sh]]
+
+A simple script that creates a series of calendar events for shifts at work.
+Here, to facilitate sharing the script on Github, I used a separate configuration file in which a user can specify things like shift length, title of the events etc.
+
+** Video
+** Photography
+*** PaintDept Instagram
+URL: [[https://instagram.com/paintdept][instagram.com/paintdept]]
+
+I credit the original idea for this to my co-worker Romario.
+As part of our job, we would dispense colorants into paint bases and then put them in a shaker before handing them over to customers.
+Sometimes, we would dispense the colorants, then close the can and briefly shake it by hand, before reopening and taking photos of the patterns that formed on the surface.
+
+Here are some of the photos in a 16:10 aspect ratio version.
+
+@@html:<img src="../assets/images/paintdept-1.jpg" max-width="800px" />@@
+  
+@@html:<img src="../assets/images/paintdept-2.jpg" max-width="800px" />@@
