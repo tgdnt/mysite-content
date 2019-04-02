@@ -19,9 +19,9 @@ Some GTD[fn:1] proponents advocate actually scheduling each of your tasks rather
 For some time years ago, I used an excellent mobile app called /Timeful/ that did just that.[fn:3]
 
 /book/ uses [[https://lostpackets.de/khal/index.html][/khal/]] to create calendar events and can optionally use [[https://vdirsyncer.pimutils.org/en/stable/][/vdirsyncer/]] to synchronize them with various cloud services.
-[fn:1] David Allen's very popular productivity paradigm known as [[https://gettingthingsdone.com/][Getting Things Done]].
+[fn:1] David Allen's very popular productivity paradigm known as [[https://gettingthingsdone.com/][/Getting Things Done/]].
 [fn:2] See Dave Crenshaw's video [[https://www.lynda.com/Business-Software-tutorials/Replace-do-lists-schedule/440668/489450-4.html][/Replace to-do lists with a schedule/]], on Lynda.com. In my /Emacs Org mode/ set-up, my agenda shows undated TODO items under a headline that says "Unscheduled:". So I am encouraged to schedule everything. As Crenshaw argues, it's worth managing your time budget and learning to estimate effort.
-[fn:3] Unfortunately, /Timeful/ was /acquihired/ by Google, the app was quickly discontinued with the promise that its functionality would be ported over to Google apps. What I most valued was how the interface allowed you to drag tasks onto a time grid to schedule them. It could also minimize calendar events, so that they wouldn't affect your planning if they don't actually require your attention.
+[fn:3] Unfortunately, /Timeful/ was /acquihired/ by Google and the app was quickly discontinued with the promise that its functionality would be ported over to Google apps. What I most valued was how the interface allowed you to drag tasks onto a time grid to schedule them. It could also minimize calendar events, so that they wouldn't affect your planning if they don't actually require your attention.
 **** /remind/
 Project page: [[https://github.com/tgdnt/remind][github.com/tgdnt/remind]] 
 
@@ -39,8 +39,7 @@ Since switching over to /Emacs Org mode/, I plan to port this over to /Elisp/ to
 Project page: [[https://github.com/tgdnt/myshifts.sh][github.com/tgdnt/myshifts.sh]]
 
 A simple script that creates a series of calendar events for shifts at work.
-Here, to facilitate sharing the script on Github, I used a separate configuration file in which a user can specify things like shift length, title of the events etc.
-
+Here, to facilitate sharing the script on Github, I used a separate configuration file in which a user can specify things like shift length, title of the even
 ** Video
 ** Photography
 *** PaintDept Instagram
@@ -52,6 +51,11 @@ Sometimes, we would dispense the colorants, then close the can and briefly shake
 
 Here are some of the photos in a 16:10 aspect ratio version.
 
-@@html:<img src="../assets/images/paintdept-1.jpg" max-width="800px" />@@
-  
-@@html:<img src="../assets/images/paintdept-2.jpg" max-width="800px" />@@
+#+BEGIN_HTML
+<div class="image-grid">
+<img class="left" src="../assets/images/paintdept-1.jpg" />
+<img class="right" src="../assets/images/paintdept-2.jpg" />
+<img class="left" src="../assets/images/paintdept-3.jpg" />
+<img class="right" src="../assets/images/paintdept-4.jpg" />
+</div>
+#+END_HTML
