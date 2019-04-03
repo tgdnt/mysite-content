@@ -4,7 +4,7 @@ title: About me
 permalink: /about/
 ---
 #+END_HTML
-I am a Brazilian immigrant in Kansas City with experience in video production, web development and sales, looking to begin a career in the tech industry as a technical writer.
+I am a Brazilian immigrant in Kansas City with experience in video production, web development and sales, seeking a new career in the tech industry as a technical writer.
 #+BEGIN_HTML
 <picture>
     <source media="(min-width: 760px)" srcset="../assets/images/about-1.jpg">
