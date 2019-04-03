@@ -50,13 +50,13 @@ I credit the original idea for this to my co-worker Romario.
 As part of our job, we would dispense colorants into paint bases and then put them in a shaker before handing them over to customers.
 Sometimes, we would dispense the colorants, then close the can and briefly shake it by hand, before reopening and taking photos of the patterns that formed on the surface.
 
-Here are some of the photos in a 16:10 aspect ratio version.
+Here are some of the photos in a 16:10 aspect ratio.
 
 #+BEGIN_HTML
 <div class="image-grid">
-<img src="../assets/images/paintdept-1.jpg" />
-<img src="../assets/images/paintdept-2.jpg" />
-<img src="../assets/images/paintdept-3.jpg" />
-<img src="../assets/images/paintdept-4.jpg" />
+<div><a href="../assets/images/paintdept-1.jpg"><img src="../assets/images/paintdept-1.jpg" /></a></div>
+<div><a href="../assets/images/paintdept-2.jpg"><img src="../assets/images/paintdept-2.jpg" /></a></div>
+<div><a href="../assets/images/paintdept-3.jpg"><img src="../assets/images/paintdept-3.jpg" /></a></div>
+<div><a href="../assets/images/paintdept-4.jpg"><img src="../assets/images/paintdept-4.jpg" /></a></div>
 </div>
 #+END_HTML
