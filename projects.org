@@ -43,7 +43,7 @@ For those cases, the /stale.txt/ file is a place where you can still store them,
 Odds are that when you look at them again, you won't hesitate to delete them or you'll see an opportunity to give them another go.
 Either way, it will feel better than to just stare at those todo items that are clearly going nowhere.
 
-Since switching over to /Emacs Org mode/, I plan to port this over to /Elisp/.
+Since moving to /Emacs Org mode/, I plan to port this over to /Elisp/.
 
 [fn:todohorizon] To truly have nothing on one's todo list --- nothing at all --- as one does perhaps at birth, but in adulthood, could be described by me as a "todo list event horizon".
 ** myshifts.sh
@@ -57,7 +57,7 @@ URL: [[https://instagram.com/paintdept][instagram.com/paintdept]]
 
 I credit the original idea for this to my co-worker Romario.
 As part of our job, we would dispense colorants into paint bases and then put them in a shaker before handing them over to customers.
-Sometimes, we would dispense the colorants, then close the can and briefly shake it by hand, before reopening and taking photos of the patterns that formed on the surface.
+Sometimes, we would dispense the colorants, close the can and briefly shake it by hand, before reopening and taking photos of the patterns that formed on the surface.
 
 Here are some of the photos in a 16:10 aspect ratio.
 
