@@ -38,7 +38,7 @@ For better plain text readability, ~pandoc~ creates line breaks that are ignored
 However, if they come within a span of inline code, the line break will make it into the rendered HTML.
 To prevent this, we must tell ~pandoc~ to preserve the original text wrapping by giving it the option ~--wrap=preserve~.
 *** Noted on [2018-12-02 Sun 23:35]
-To operate on all the Org files we need, the script has to create a variable for the new filename, changing its extension via ~sed~[fn:sed], and then, using a ~while~ loop, iterate through every /.org/ file within the present working directory or any of its subdirectories.
+To operate on all the Org files we need, the script has to create a variable for the new filename, changing its extension via ~sed~,[fn:sed] and then, using a ~while~ loop, iterate through every /.org/ file within the present working directory or any of its subdirectories.
 
 #+BEGIN_SRC bash
 find . -name "*.org" | while read -r filename; do
@@ -58,7 +58,7 @@ It's worth mentioning that there is a gem called /[[https://github.com/eggcaker/
 It looks very interesting, but for now I've decided to stick with my script because it is simpler and easier to debug.
 
 As suggested in /[[https://orgmode.org/worg/org-tutorials/org-jekyll.html][Using org to blog with Jekyll]]/, I enclose my front matter between ~#+BEGIN_HTML~ and ~#+END_HTML~ tags.
-Similarly, such blocks can be useful for inserting elements that are not covered by the Org syntax, such as the ~<aside>~ element[fn:inlinehtml].
+Similarly, such blocks can be useful for inserting elements that are not covered by the Org syntax, such as the ~<aside>~ element.[fn:inlinehtml]
 
 Largely unchanged from its /MkDocs/ version, the line below will find all the ~.org~ files within the Org source folder, which here is ~./_orgsource~, and then start a ~while~ loop to work through them.
 
@@ -121,7 +121,7 @@ See the final script in this [[https://gist.github.com/tgdnt/cba70c5fda14fac47ee
 First of all, although this has been fun to work on, it would be reasonable to look into /jekyll-org/ and consider using it.
 It may present a good opportunity to learn in /Ruby/, if I could try to build some of what I did here into that.
 
-As of right now, my thoughts on the future of this script have been towards converting a ~#+BEGIN_ASIDE~ block, which would perhaps amount to extending Org syntax[fn:org-structure].
+As of right now, my thoughts on the future of this script have been towards converting a ~#+BEGIN_ASIDE~ block, which would perhaps amount to extending Org syntax.[fn:org-structure]
 
 Beyond this script, I also have several notes about /asides/ and the ~<aside>~ element, which I will edit into an article, as I spend more time on matters of writing and style rather than tooling.
 

@@ -11,11 +11,11 @@ lede:
 [[https://orgmode.org/org.html#Org-Mobile][Org Mobile]] works by creating something like a proxy of your Org files in a designated directory for a mobile app to read and write to.
 The same package then provides commands to reingest the modified data and propagate its changes.
 
-I believe [[https://mobileorg.github.io][MobileOrg]] is the only app, at least on iOS, to actually use the /Org Mobile/ protocol[fn:mobileorgmobile].
+I believe [[https://mobileorg.github.io][MobileOrg]] is the only app, at least on iOS, to actually use the /Org Mobile/ protocol.[fn:mobileorgmobile]
 Others, such as [[https://beorgapp.com/][beorg]], simply synchronize the Org directory itself to edit the files directly.
 
 The most compelling reason to use /Org Mobile/, and the reason I decided to try it, is its built-in encryption.
-With it, you can make your Org data available to yourself online while keeping it private, uploading nothing but ciphertext[fn:encryption].
+With it, you can make your Org data available to yourself online while keeping it private, uploading nothing but ciphertext.[fn:encryption]
 
 The most compelling reason /not/ to use it is either that the user must remember to run the functions to /push/ and /pull/ the data or that most users will find the /MobileOrg/ iOS app disappointing.
 
@@ -91,7 +91,7 @@ The drawbacks may outweigh the benefits, so it should be considered whether or n
 
 We must use ~(require 'org-mobile)~ to make /Emacs/ load whatever it takes to make the ~org-mobile~ /feature/ available.
 If it is not available, Emacs won't know what ~org-mobile-pull~ is supposed to do.
-This step may not be necessary if another Org mode /feature/ has already been called earlier in your /init.el/ file[fn:require].
+This step may not be necessary if another Org mode /feature/ has already been called earlier in your /init.el/ file.[fn:require]
 
 [fn:require] For example, the /Spacemacs/ Org configuration layer makes it unnecessary to call ~(require 'org-mobile)~ because it will have loaded it before it runs your ~dotspacemacs/user-config~.
 ** Further work
@@ -103,7 +103,7 @@ However, I remain very interested in /MobileOrg/ because the app is open source 
 To get back on /MobileOrg/, I intend to get notifications by exporting my Org agendas to /.ics/ format and using [[https://github.com/pimutils/vdirsyncer][vdirsyncer]] to synchronize that, so I would receive mobile notifications via a Calendar app. Although that's not as good as the app's own notifications would be, it's enough to get me back on.
 
 I've seen other interesting mobile Org workflows around the web that I plan to work on in the future.
-In particular, the question of when to automatically trigger sync remains open[fn:savesync].
+In particular, the question of when to automatically trigger sync remains open.[fn:savesync]
 Also, some research is needed on figuring out whether ~org-mobile-push~ pushes every file regardless whether or not it has been changed (which would mean we should not clear the /Org Mobile/ directory), and whether ~rclone~ makes the same decision based on /modified date/ or /hash/.
 Those answers may show us how to make this process faster.
 
