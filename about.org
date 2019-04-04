@@ -23,14 +23,13 @@ I am a Brazilian immigrant in Kansas City with experience in video production, w
 - more...
 
 ** Things I want to do:
-- work with words, technology and education in an industry where important work gets done;
-- catch up on the history of world cinema;
+- work with words, technology and education in an industry that matters;
+- catch up on the history of cinema;
 - write and shoot my own movies.
 
 ** Things I have done:
 - studied Communications in college with a focus on Radio and TV;
-- written and shot my own movies;
-- worked as a freelance videographer, shooting and editing video;
+- written and shot my own movies and documentaries;
 - taught workshops on video production;
 - managed a youth hostel in London with 40 dorms and 200 beds;
 - worked at a hardware store and learned how to be a salesman;
@@ -41,7 +40,7 @@ I am a Brazilian immigrant in Kansas City with experience in video production, w
 ** Things that matter to me:
 - good copy;
 - good journalism;
-- privacy and cybersecurity;
+- privacy and cryptography;
 - coffee;
 - cycling;
 - art;
@@ -50,3 +49,5 @@ I am a Brazilian immigrant in Kansas City with experience in video production, w
 #+BEGIN_HTML
 <p>Any questions? <a href="mailto:{{ site.comment_to_email }}?subject={{ page.title | uri_escape }}">Email me!</a></p>
 #+END_HTML
+
+Note: the lists above are non-exhaustive.
