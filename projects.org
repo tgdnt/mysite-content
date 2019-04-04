@@ -12,7 +12,7 @@ They are simply /bash/ scripts that introduce new functions and integrations to 
 
 I worked on these as much to learn more about /bash scripting/ as to add the functionality I wanted for my own use of /todo.txt/.
 Since writing these scripts, I have switched over to /Emacs Org mode/, so their code repositories are now archived.
-*** /book/
+*** book
 Project page: [[https://github.com/tgdnt/book][github.com/tgdnt/book]] 
 
 Often it is beneficial to schedule your todos on your calendar, blocking out some time to work on it.
@@ -20,28 +20,37 @@ Some GTD[fn:1] proponents advocate actually scheduling each of your tasks rather
 For some time years ago, I used an excellent mobile app called /Timeful/ that did just that.[fn:3]
 
 /book/ uses [[https://lostpackets.de/khal/index.html][/khal/]] to create calendar events and can optionally use [[https://vdirsyncer.pimutils.org/en/stable/][/vdirsyncer/]] to synchronize them with various cloud services.
-[fn:1] David Allen's very popular productivity paradigm known as [[https://gettingthingsdone.com/][/Getting Things Done/]].
+
+[fn:1] David Allen's very popular productivity praxis known as [[https://gettingthingsdone.com/][/Getting Things Done/]].
 [fn:2] See Dave Crenshaw's video [[https://www.lynda.com/Business-Software-tutorials/Replace-do-lists-schedule/440668/489450-4.html][/Replace to-do lists with a schedule/]], on Lynda.com. In my /Emacs Org mode/ set-up, my agenda shows undated TODO items under a headline that says "Unscheduled:". So I am encouraged to schedule everything. As Crenshaw argues, it's worth managing your time budget and learning to estimate effort.
 [fn:3] Unfortunately, /Timeful/ was /acquihired/ by Google and the app was quickly discontinued with the promise that its functionality would be ported over to Google apps. What I most valued was how the interface allowed you to drag tasks onto a time grid to schedule them. It could also minimize calendar events, so that they wouldn't affect your planning if they don't actually require your attention.
-*** /remind/
+*** remind
 Project page: [[https://github.com/tgdnt/remind][github.com/tgdnt/remind]] 
 
 /remind/ is my way of getting mobile notifications for todos on an iPhone, because none of the /todo.txt/ mobile apps really do it.
 It uses [[https://ss64.com/osx/osascript.html][/osascript/]] to interact with iOS Reminders.
-*** /stale/
+*** stale
 Project page: [[https://github.com/tgdnt/stale][github.com/tgdnt/stale]] 
 
-On a quest to keep your todo list tidy --- perhaps to achieve "todo list zero" --- I found it useful to have a process for managing "stale" tasks, borrowing Github's word for branches that haven't been committed to in a while.
-With ~todo.sh stale~, the user can easily move todo items back and forth between a todo file and a file such as /stale.txt/. Periodically, one would review stale todos to decide whether to just cancel them entirely or restore them.
+On a quest to keep your todo list tidy --- perhaps to achieve "todo list zero"[fn:todohorizon] --- I found it useful to have a process for managing "stale" tasks, borrowing Github's word for branches that haven't been committed to in a while.
+With ~todo.sh stale~, the user can quickly move items back and forth between a /todo.txt/ file and a designated file such as /stale.txt/.
 
-My plans for this had been to automatically prune todos that had been on your list for a certain amount of time (tracked by a required creation date).
-Since switching over to /Emacs Org mode/, I plan to port this over to /Elisp/ to continue developing it there and eventually ~(provide 'org-stale)~.
+It's like the undoing of a todo list.
+Typically you keep one in order to avoid forgetting about certain things, but sometimes it can become a list of things that you /want/ to do --- or /think/ you should do --- but perhaps you're not actually /going/ to do them.
+It can make you anxious and distracted.
+
+For those cases, the /stale.txt/ file is a place where you can still store them, just in case, but you won't have to see them every time you look at the list of things you're actually going to do.
+Odds are that when you look at them again, you won't hesitate to delete them or you'll see an opportunity to give them another go.
+Either way, it will feel better than to just stare at those todo items that are clearly going nowhere.
+
+Since switching over to /Emacs Org mode/, I plan to port this over to /Elisp/.
+
+[fn:todohorizon] To truly have nothing on one's todo list --- nothing at all --- as one does perhaps at birth, but in adulthood, could be described by me as a "todo list event horizon".
 ** myshifts.sh
 Project page: [[https://github.com/tgdnt/myshifts.sh][github.com/tgdnt/myshifts.sh]]
 
 A simple script that creates a series of calendar events for shifts at work.
-Here, to facilitate sharing the script on Github, I used a separate configuration file in which a user can specify things like shift length, title of the even
-* Video
+Here, to facilitate sharing the script on Github, I used a separate configuration file in which a user can specify things like shift length and the title for events.
 * Photography
 ** PaintDept Instagram
 URL: [[https://instagram.com/paintdept][instagram.com/paintdept]]
