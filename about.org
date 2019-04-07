@@ -7,9 +7,9 @@ permalink: /about/
 I am a Brazilian immigrant in Kansas City with experience in video production, web development and sales, seeking a new career in the tech industry as a technical writer.
 #+BEGIN_HTML
 <picture>
-    <source media="(min-width: 760px)" srcset="../assets/images/about-1.jpg">
-    <source media="(min-width: 608px)" srcset="../assets/images/avatar.jpg">
-    <img src="../assets/images/about-1.jpg" class="float-right" />
+    <source media="(min-width: 760px)" srcset="../assets/images/about-wide.jpg">
+    <source media="(min-width: 608px)" srcset="../assets/images/about-sq.jpg">
+    <img src="../assets/images/about-wide.jpg" class="float-right" />
 </picture>
 #+END_HTML
 
