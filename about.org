@@ -47,7 +47,7 @@ I am a Brazilian immigrant in Kansas City with experience in video production, w
 - soccer.
 
 #+BEGIN_HTML
-<p>Any questions? <a href="mailto:{{ site.comment_to_email }}?subject={{ page.title | uri_escape }}">Email me!</a></p>
+<p>Any questions? <a href="mailto:{{ site.email }}?subject={{ page.title | uri_escape }}">Email me!</a></p>
 #+END_HTML
 
 Note: the lists above are non-exhaustive.

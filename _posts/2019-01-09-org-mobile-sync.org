@@ -109,6 +109,6 @@ Those answers may show us how to make this process faster.
 
 Please share your thoughts and ideas on this, or if you have seen any code that can fill a hole here.
 
-Send me an [[mailto:{{ site.comments_email }}?subject={{ page.title | uri_escape }}][email]].
+Send me an [[mailto:{{ site.email }}?subject={{ page.title | uri_escape }}][email]].
 
 [fn:savesync] See [[https://stackoverflow.com/questions/8432108/how-to-automatically-do-org-mobile-push-org-mobile-pull-in-emacs#answer-38517906][link]] for what looks like a sound implementation of triggering push every time an /Org mode/ buffer is saved.

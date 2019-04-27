@@ -126,6 +126,6 @@ As of right now, my thoughts on the future of this script have been towards conv
 Beyond this script, I also have several notes about /asides/ and the ~<aside>~ element, which I will edit into an article, as I spend more time on matters of writing and style rather than tooling.
 
 I appreciate your reading, and I hope this may be useful to others.
-Please share with me any thoughts and ideas related to this post via [[mailto:tiago@tgdnt.com?subject=Typing%20for%20Jekyll%20with%20Org%20syntax][email]].
+Please share with me any thoughts and ideas related to this post via [[mailto:{{ site.email }}?subject={{ page.title | uri_escape }}][email]].
 
 [fn:org-structure] This, I believe, can be done via ~org-structure-template-alist~, but I assume would only export via /Emacs/. More of Org to discover. See [[https://orgmode.org/manual/Easy-templates.html][link]]
