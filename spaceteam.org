@@ -10,9 +10,9 @@ localization of the free mobile phone game [[https://spaceteam.ca/][Spaceteam]],
 game of cooperative shouting with lots of words in it.
 
 I am credited only in the app itself when you change the
-language to Brazilian Portuguese. I would recommend you install
-the game and try it out, but I have included a screenshot here
-so you don't have to.
+language to Brazilian Portuguese. I would recommend installing
+the game any way, but I have included a screenshot here so you
+don't have to.
 
 #+BEGIN_HTML
 <picture>
