@@ -1,13 +1,13 @@
 #+BEGIN_HTML
 ---
-title: Spaceteam Pt-BR Localization Credit
+title: Spaceteam in Portuguese
 permalink: /spaceteam-pt/
-notitle: t
 ---
 #+END_HTML
 Hello! I created this page just to show you how I was one of
 three volunteers credited with the Brazilian Portuguese
-localization of the free mobile phone game [[https://spaceteam.ca/][Spaceteam]].
+localization of the free mobile phone game [[https://spaceteam.ca/][Spaceteam]], a
+game of cooperative shouting with lots of words in it.
 
 I am credited only in the app itself when you change the
 language to Brazilian Portuguese. I would recommend you install
@@ -16,9 +16,7 @@ so you don't have to.
 
 #+BEGIN_HTML
 <picture>
-    <img src="../assets/images/spaceteam-credit.jpg" class="float-right" />
+    <img src="../assets/images/spaceteam-credit.jpg" />
 </picture>
 #+END_HTML
 
-Spaceteam is a fun collaborative shouting game with lots of
-words in it.
