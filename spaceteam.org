@@ -14,13 +14,13 @@ language to Brazilian Portuguese. I would recommend installing
 the game any way, but I have included a screenshot at the
 bottom of this page so you don't have to.
 
-In addition to the interface itself, localizing Spaceteam deals
-with a considerable database of words that are randomly strung
-together and need to make sense.
+In addition to the interface, localizing Spaceteam deals with a
+considerable database of words that get randomly strung together
+and need to make sense.
 
 Words are classed as before-noun and after-noun adjectives,
 verbs, and more. There is also a small set of predetermined
-strings that could not be combined with random words.
+strings that can't be combined with any random words.
 
 Thanks for stopping by!
 
