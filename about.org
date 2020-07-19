@@ -4,7 +4,8 @@ title: About me
 permalink: /about/
 ---
 #+END_HTML
-I am a Brazilian immigrant in Kansas City with experience in video production, web development and sales, seeking a new career in the tech industry as a technical writer.
+I am a Brazilian immigrant in Kansas City working in the tech
+industry, currently in a support role.
 #+BEGIN_HTML
 <picture>
     <source media="(min-width: 760px)" srcset="../assets/images/about-wide.jpg">
@@ -23,9 +24,9 @@ I am a Brazilian immigrant in Kansas City with experience in video production, w
 - more...
 
 ** Things I want to do:
-- work with words, technology and education in an industry that matters;
+- work with words, technology, languages and/or education;
 - catch up on the history of cinema;
-- write and shoot my own movies.
+- write everything.
 
 ** Things I have done:
 - studied Communications in college with a focus on Radio and TV;
@@ -37,12 +38,13 @@ I am a Brazilian immigrant in Kansas City with experience in video production, w
 - made pizza for a living;
 - lived in the United Kingdom and the Dominican Republic.
 
-** Things that matter to me:
+** Things I care about:
 - good copy;
 - good journalism;
-- privacy and cryptography;
+- online privacy and cybersecurity;
 - coffee;
 - cycling;
+- ancient history;
 - art;
 - soccer.
 
@@ -50,4 +52,4 @@ I am a Brazilian immigrant in Kansas City with experience in video production, w
 <p>Any questions? <a href="mailto:{{ site.email }}?subject={{ page.title | uri_escape }}">Email me!</a></p>
 #+END_HTML
 
-Note: the lists above are non-exhaustive.
+Note: the lists above are probably not exhaustive.
